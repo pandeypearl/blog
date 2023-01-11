@@ -11,19 +11,24 @@
     <title>Blog</title>
 </head>
 <body>
-    <h1>blog Posts</h1>
-    <a href="/articles/new">new article</a>
+    <h1 class="page-heading">Blog Posts</h1>
+    <div class="btn-container">
+        <a class="btn btn-green" href="/articles/new">new article</a>
+    </div>
+    
 
     <% articles.forEach(article => { %>
         <div class="item">
             <h2><%= article.title %></h2>
             <small><%= article.createdAt.toLocaleDateString() %></small>
             <p><%= article.description %></p>
-            <a href="articles/<%= article.slug %>">Read More</a>
-            <a href="articles/edit/<%= article.id %>">Edit</a>
-            <form action="/articles/<%= article.id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete</button>
-            </form>
+            <div class="btn-container">
+                <a class="btn btn-green" href="articles/<%= article.slug %>">Read More</a>
+                <a  class="btn btn-yellow" href="articles/edit/<%= article.id %>">Edit</a>
+                <form class="inline-form" action="/articles/<%= article.id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-red" type="submit">Delete</button>
+                </form>
+            </div>
         </div>
     <% }) %>
 </body>
